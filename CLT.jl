@@ -1,6 +1,7 @@
 using Random
 using Statistics
 using Plots
+using Distributions
 
 # Function to simulate the Central Limit Theorem
 function simulate_CLT(pop_mean::Float64, pop_std::Float64, sample_size::Int, num_samples::Int)
@@ -23,15 +24,15 @@ num_samples = 10000  # Number of samples
 # Simulate
 sample_means = simulate_CLT(pop_mean, pop_std, sample_size, num_samples)
 
-# Plotting
-histogram(sample_means, bins=50, density=true, alpha=0.6, label="Sample Means", title="Central Limit Theorem Simulation", xlabel="Sample Mean", ylabel="Density")
+# Create plots
+p1 = histogram(sample_means, bins=50, density=true, alpha=0.6, label="Sample Means", title="Histogram of Sample Means", xlabel="Sample Mean", ylabel="Density")
 
-# Plot the theoretical normal distribution
+# Theoretical normal distribution plot
 theoretical_mean = pop_mean
 theoretical_std = pop_std / sqrt(sample_size)
 x = range(minimum(sample_means), stop=maximum(sample_means), length=1000)
 y = pdf.(Normal(theoretical_mean, theoretical_std), x)
-plot!(x, y, label="Theoretical Normal Distribution", lw=2, color=:red)
+p2 = plot(x, y, label="Theoretical Normal Distribution", lw=2, color=:red, title="Theoretical Normal Distribution", xlabel="Sample Mean", ylabel="Density")
 
-# Display the plot
-display(plot)
+# Combine plots in a 1x2 grid
+plot(p1, p2, layout = (1, 2))
