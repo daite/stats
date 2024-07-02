@@ -2,7 +2,7 @@ using Random
 using Plots
 
 # Function to simulate the Law of Large Numbers
-function simulate_LLN(n_steps::Int, true_mean::Float64, distribution::Function)
+function simulate_LLN(n_steps::Int, distribution::Function)
     sample_means = zeros(n_steps)  # Array to store sample means
     cumulative_sum = 0.0  # Cumulative sum of samples
 
@@ -21,7 +21,7 @@ true_mean = 0.5  # True mean of the uniform distribution [0,1]
 distribution = () -> rand()  # Uniform distribution
 
 # Simulate
-sample_means = simulate_LLN(n_steps, true_mean, distribution)
+sample_means = simulate_LLN(n_steps, distribution)
 
 # Plotting
 plot(1:n_steps, sample_means, label="Sample Mean", xlabel="Number of Samples", ylabel="Mean", title="Law of Large Numbers Simulation")
