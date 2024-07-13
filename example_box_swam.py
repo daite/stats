@@ -2,7 +2,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# 1에서 10 사이의 무작위 정수 1000개 생성
+# 1에서 1000 사이의 무작위 정수 1000개 생성
 data = np.random.randint(1, 1000, size=1000)
 
 # 상자수염 그림과 스웜 플롯 함께 그리기
