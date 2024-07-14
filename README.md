@@ -4,3 +4,4 @@
 # Figures
 ![Alt Text](https://github.com/daite/stats/blob/main/lln_simulation.gif)
 ![Alt Text](https://github.com/daite/stats/blob/main/Figure_box_swarm.png)
+![Alt Text](https://github.com/daite/stats/blob/main/anova.png)
