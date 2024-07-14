@@ -6,3 +6,4 @@
 ![Alt Text](https://github.com/daite/stats/blob/main/Figure_box_swarm.png)
 ![Alt Text](https://github.com/daite/stats/blob/main/anova.png)
 ![Alt Text](https://github.com/daite/stats/blob/main/binominal_test.png)
+![Alt Text](https://github.com/daite/stats/blob/main/chi_square.png)
