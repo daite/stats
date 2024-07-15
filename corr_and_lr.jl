@@ -16,6 +16,10 @@ science_scores = math_scores .+ rand(-10:10, n_students)
 df = DataFrame(math_scores=math_scores, science_scores=science_scores)
 
 # Perform linear regression
+# @formula(response_variable ~ predictor_variables)
+# response_variable: This is the dependent variable (or outcome variable) in your model. It's the variable you want to predict or explain.
+# predictor_variables: These are the independent variables (or explanatory variables) that you believe influence or predict the value of the response variable.
+
 model = lm(@formula(science_scores ~ math_scores), df)
 
 # Extract coefficients
