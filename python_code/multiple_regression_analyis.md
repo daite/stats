@@ -101,6 +101,9 @@ strong multicollinearity or other numerical problems.
 ```
 </details>
 
+## Figures
+![Alt Text](https://github.com/daite/stats/blob/main/images/multiple_regression.png)
+
 ## 모델 적합도 (Model Fit)
 - **R-squared**: 0.662  
   - **해석**: 설명변수들이 반응변수의 변동성을 설명하는 비율입니다. 66.2%의 변동성이 설명변수들로 설명됩니다. 이는 모델이 상당한 예측력을 가지고 있음을 의미합니다.
