@@ -1,5 +1,70 @@
 # OLS 회귀 분석 결과 해석
-# Result
+
+## Sample code
+<details>
+<summary>Click to toggle contents of `code`</summary>
+
+```python
+import numpy as np
+import pandas as pd
+import statsmodels.api as sm
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# 시드 설정
+np.random.seed(0)
+
+# 데이터 생성
+n = 100  # 데이터 포인트 수
+x1 = np.random.normal(170, 10, n)  # 키 (cm)
+x2 = np.random.normal(85, 10, n)   # 허리둘레 (cm)
+beta_0 = 50
+beta_1 = 0.5
+beta_2 = 0.3
+epsilon = np.random.normal(0, 5, n)  # 오차
+
+# 몸무게 계산
+y = beta_0 + beta_1 * x1 + beta_2 * x2 + epsilon
+
+# 데이터프레임 생성
+data = pd.DataFrame({'Height': x1, 'Waist': x2, 'Weight': y})
+
+# 회귀 모델 적합
+X = data[['Height', 'Waist']]
+X = sm.add_constant(X)  # 상수 항 추가
+model = sm.OLS(data['Weight'], X).fit()
+
+# 결과 출력
+print(model.summary())
+
+# 회귀 평면 시각화
+fig = plt.figure(figsize=(12, 8))
+ax = fig.add_subplot(111, projection='3d')
+
+# 데이터 포인트
+ax.scatter(data['Height'], data['Waist'], data['Weight'], c='blue', marker='o', label='Data')
+
+# 회귀 평면 생성
+height_range = np.linspace(data['Height'].min(), data['Height'].max(), 10)
+waist_range = np.linspace(data['Waist'].min(), data['Waist'].max(), 10)
+height_mesh, waist_mesh = np.meshgrid(height_range, waist_range)
+weight_pred = model.predict(sm.add_constant(pd.DataFrame({'Height': height_mesh.ravel(), 'Waist': waist_mesh.ravel()})))
+weight_mesh = weight_pred.values.reshape(height_mesh.shape)
+
+# 회귀 평면
+ax.plot_surface(height_mesh, waist_mesh, weight_mesh, color='red', alpha=0.5)
+
+ax.set_xlabel('Height')
+ax.set_ylabel('Waist')
+ax.set_zlabel('Weight')
+plt.title('Regression Plane')
+plt.legend()
+plt.show()
+
+```
+</details>
+
+## OLS 회귀 분석 결과
 <details>
 <summary>Click to toggle contents of `Result`</summary>
 
